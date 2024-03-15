@@ -1,1 +1,0 @@
-This are the notes for the first module
