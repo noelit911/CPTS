@@ -19,3 +19,20 @@ Some of the above settings already bring some sensitive options. However, suppos
 |`magic output = script.out`|Where the output of the magic script needs to be stored?|
 
 Smbclient also allows us to execute local system commands using an exclamation mark at the beginning (`!<cmd>`) without interrupting the connection.
+
+From the administrative point of view, we can check these connections using `smbstatus`. Apart from the Samba version, we can also see who, from which host, and which share the client is connected. This is especially important once we have entered a subnet (perhaps even an isolated one) that the others can still access.
+
+```shell-session
+root@samba:~# smbstatus
+
+Samba version 4.11.6-Ubuntu
+PID     Username     Group        Machine                                   Protocol Version  Encryption           Signing              
+----------------------------------------------------------------------------------------------------------------------------------------
+75691   sambauser    samba        10.10.14.4 (ipv4:10.10.14.4:45564)      SMB3_11           -                    -                    
+
+Service      pid     Machine       Connected at                     Encryption   Signing     
+---------------------------------------------------------------------------------------------
+notes        75691   10.10.14.4   Do Sep 23 00:12:06 2021 CEST     -            -           
+
+No locked files
+```
