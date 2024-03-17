@@ -20,6 +20,8 @@ Some of the above settings already bring some sensitive options. However, suppos
 
 Smbclient also allows us to execute local system commands using an exclamation mark at the beginning (`!<cmd>`) without interrupting the connection.
 
+#### Samba Status
+
 From the administrative point of view, we can check these connections using `smbstatus`. Apart from the Samba version, we can also see who, from which host, and which share the client is connected. This is especially important once we have entered a subnet (perhaps even an isolated one) that the others can still access.
 
 ```shell-session
@@ -35,4 +37,10 @@ Service      pid     Machine       Connected at                     Encryption  
 notes        75691   10.10.14.4   Do Sep 23 00:12:06 2021 CEST     -            -           
 
 No locked files
+```
+
+#### Brute Forcing User RIDs
+
+```shell-session
+eikisgv@htb[/htb]$ for i in $(seq 500 1100);do rpcclient -N -U "" 10.129.14.128 -c "queryuser 0x$(printf '%x\n' $i)" | grep "User Name\|user_rid\|group_rid" && echo "";done
 ```
