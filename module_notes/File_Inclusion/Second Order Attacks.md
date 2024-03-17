@@ -7,5 +7,3 @@ In this case, we would be poisoning a database entry with a malicious LFI payloa
 Developers often overlook these vulnerabilities, as they may protect against direct user input (e.g. from a `?page` parameter), but they may trust values pulled from their database, like our username in this case. If we managed to poison our username during our registration, then the attack would be possible.
 
 Exploiting LFI vulnerabilities using second-order attacks is similar to what we have discussed in this section. The only variance is that we need to spot a function that pulls a file based on a value we indirectly control and then try to control that value to exploit the vulnerability.
-
-**Note:** All techniques mentioned in this section should work with any LFI vulnerability, regardless of the back-end development language or framework.
